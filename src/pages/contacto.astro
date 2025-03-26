@@ -1,0 +1,46 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContentImageBlock from '../components/ContentImageBlock.astro';
+import Banner from '../components/Banner.astro';
+
+/* ========================== */
+/*           IMAGES           */
+/* ========================== */
+import bgContacto from '../assets/images/bg/bg-contacto.webp';
+import contactMain from '../assets/images/contact-main.webp';
+import Contact from '../assets/images/contacto.webp';
+---
+
+<BaseLayout>
+	<!-- ========================== -->
+	<!--           Banner           -->
+	<!-- ========================== -->
+	<section>
+		<Banner
+			bannerSrc={bgContacto}
+			bannerAlt=""
+			bannerPage="Contacto"
+			bannerTitle="Contacto"
+		/>
+	</section>
+	<!-- =========================== -->
+	<!--           Content           -->
+	<!-- =========================== -->
+	<section>
+		<ContentImageBlock
+			contentTitle="¡Me encantaría saber de ti!"
+			contentText="Puedes contactarme a través: Mi correo electrónico: info@nutribienestar.com Número de teléfono: 123-456-7890. Estoy aquí para ayudarte en tu camino hacia una vida más saludable."
+			contentImgSrc={contactMain}
+			contentImgAlt=""
+			contentReverse={false}
+		/>
+		<br />
+		<ContentImageBlock
+			contentTitle="¿Tienes dudas o preguntas?"
+			contentText="Además, si tienes preguntas sobre mis servicios, deseas más información sobre talleres o simplemente quieres charlar sobre cómo mejorar tus hábitos alimenticios, no dudes en escribirme. Tu bienestar es mi prioridad, y juntos podemos crear un plan personalizado que se adapte a tus necesidades y objetivos. ¡Espero saber de ti pronto!"
+			contentImgSrc={Contact}
+			contentImgAlt=""
+			contentReverse={true}
+		/>
+	</section>
+</BaseLayout>

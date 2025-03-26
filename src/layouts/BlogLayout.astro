@@ -1,0 +1,33 @@
+---
+import '../styles/global.css';
+import Footer from '../components/Footer.astro';
+import AnnouncementBar from '../components/AnnouncementBar.astro';
+import NavBar from '../components/NavBar.astro';
+import BaseHead from '../components/BaseHead.astro';
+
+export let title = 'NutriBienestar'; // Valor por defecto si no se define
+---
+
+<!doctype html>
+<html lang="es-MX" class="mx-auto max-w-[98%] md:max-w-[95%] lg:max-w-[80%]">
+	<head>
+		<!-- <BaseHead /> -->
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Astro Basics</title>
+	</head>
+	<body class="flex flex-col gap-[1rem]">
+		<header class="mt-[0.25rem] flex flex-col gap-[0.5rem]">
+			<!-- <AnnouncementBar /> -->
+			<NavBar />
+		</header>
+		<main class="flex flex-col gap-[2rem]" role="main">
+			<slot />
+		</main>
+		<footer>
+			<Footer />
+		</footer>
+	</body>
+</html>

@@ -1,0 +1,21 @@
+---
+const { eventTitle, eventText } = Astro.props;
+---
+
+<div
+	class="bg-accent flex h-full flex-col gap-[1rem] rounded p-[2rem] text-center"
+>
+	<h1 class="title">{eventTitle}</h1>
+	<p class="main">{eventText}</p>
+	<button
+		class="bg-brandPrimary mx-auto flex cursor-pointer gap-[0.5rem] rounded px-[1rem] py-[0.5rem] text-white shadow-lg transition-all duration-300 hover:scale-110"
+		aria-label="Descargar archivo"
+	>
+		<span>Descarga</span>
+		<img
+			src="/icons/material-symbols-light--download-sharp-white.svg"
+			class="h-[24px] w-[24px]"
+			alt='Ícono de descarga"'
+		/>
+	</button>
+</div>

@@ -1,0 +1,13 @@
+---
+const { announcementLink, announcementMessage } = Astro.props;
+---
+
+<div id="announcement-bar" class="">
+	<a
+		class="bg-bars flex items-center justify-center rounded px-4 py-2"
+		href={announcementLink}
+		aria-label={announcementMessage}
+	>
+		<p class="main">{announcementMessage}</p>
+	</a>
+</div>

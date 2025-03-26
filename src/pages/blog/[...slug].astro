@@ -1,0 +1,42 @@
+---
+import { getCollection } from 'astro:content';
+import BlogLayout from '../../layouts/BlogLayout.astro';
+
+// Función para generar rutas estáticas
+export async function getStaticPaths() {
+	const posts = await getCollection('posts'); // 🔹 Mueve esto dentro de la función
+
+	return posts.map((post) => ({
+		params: { slug: post.slug },
+		props: { post },
+	}));
+}
+
+// const post = posts.find((p) => p.slug === Astro.params.slug);
+
+// Obtener el post actual según la URL
+const { post } = Astro.props;
+
+if (!post) {
+	throw new Error('Post no encontrado');
+}
+---
+
+<BlogLayout title={post.data.title}>
+	<div class="flex w-full flex-col gap-[1rem]">
+		<div class="h-[500px] w-full">
+			<img
+				src={post.data.image}
+				alt={post.data.title}
+				class="h-full w-full object-cover"
+			/>
+		</div>
+		<div>
+			<h1 class="heading text-center">{post.data.title}</h1>
+			<small>{new Date(post.data.date).toLocaleDateString()}</small>
+			<article>
+				{post.body}
+			</article>
+		</div>
+	</div>
+</BlogLayout>

@@ -1,0 +1,54 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CallToAction from '../components/CallToAction.astro';
+import ContentImageBlock from '../components/ContentImageBlock.astro';
+import Banner from '../components/Banner.astro';
+
+/* ========================== */
+/*           IMAGES           */
+/* ========================== */
+import bgSobremi from '../assets/images/bg/bg-sobremi.webp';
+import Sobremi01 from '../assets/images/sobremi-01.webp';
+import Sobremi02 from '../assets/images/sobremi-02.webp';
+---
+
+<BaseLayout>
+	<!-- ========================== -->
+	<!--           Banner           -->
+	<!-- ========================== -->
+	<section>
+		<Banner
+			bannerSrc={bgSobremi}
+			bannerAlt=""
+			bannerPage="Sobre Mí"
+			bannerTitle="Sobre Mí"
+		/>
+	</section>
+	<!-- =========================== -->
+	<!--           Content           -->
+	<!-- =========================== -->
+	<section>
+		<ContentImageBlock
+			contentTitle="Conóceme y Descubre Cómo Puedo Ayudarte a Sentirte Mejor"
+			contentText="Soy nutrióloga especializada en pérdida de peso, salud digestiva y nutrición deportiva. Mi enfoque es 100% personalizado, porque cada persona es única y merece un plan adaptado a sus necesidades."
+			contentImgSrc={Sobremi01}
+			contentImgAlt=""
+			contentReverse={false}
+		/>
+		<br />
+		<br />
+		<ContentImageBlock
+			contentTitle="Educación Nutricional y Acompañamiento Personalizado"
+			contentText="Me apasiona educar a mis pacientes para que tomen control de su salud, ya sea para perder peso o mejorar su rendimiento deportivo. Mi objetivo es guiarte hacia tus metas con un plan nutricional adecuado y sostenible. Además, ofrezco talleres interactivos donde aprenderás de forma práctica cómo adoptar una alimentación saludable y divertida. Estoy aquí para acompañarte en cada paso hacia una vida más saludable. ¡Vamos juntos en este camino!"
+			contentImgSrc={Sobremi02}
+			contentImgAlt=""
+			contentReverse={true}
+		/>
+	</section>
+	<!-- ================================== -->
+	<!--           Call To Action           -->
+	<!-- ================================== -->
+	<section>
+		<CallToAction />
+	</section>
+</BaseLayout>

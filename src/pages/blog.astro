@@ -1,0 +1,45 @@
+---
+import BlogCard from '../components/BlogCard.astro';
+import CallToAction from '../components/CallToAction.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Banner from '../components/Banner.astro';
+import { getCollection } from 'astro:content';
+
+/* ========================== */
+/*           IMAGES           */
+/* ========================== */
+import bgBlog from '../assets/images/bg/bg-blog.webp';
+
+const posts = await getCollection('posts');
+
+// Ordena los posts por fecha (más reciente primero)
+const sortedPosts = posts.sort(
+	(a, b) => new Date(b.data.date) - new Date(a.data.date)
+);
+---
+
+<BaseLayout title="Blog">
+	<!-- ========================== -->
+	<!--           Banner           -->
+	<!-- ========================== -->
+	<section>
+		<Banner
+			bannerSrc={bgBlog}
+			bannerAlt=""
+			bannerPage="Blog"
+			bannerTitle="Blog"
+		/>
+	</section>
+	<!-- =========================== -->
+	<!--           Content           -->
+	<!-- =========================== -->
+	<section class="flex flex-col gap-[1rem]">
+		{posts.map((post) => <BlogCard post={post} />)}
+	</section>
+	<!-- ================================== -->
+	<!--           Call To Action           -->
+	<!-- ================================== -->
+	<section>
+		<CallToAction />
+	</section>
+</BaseLayout>

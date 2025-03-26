@@ -1,0 +1,61 @@
+---
+import { Image } from 'astro:assets';
+
+const {
+	servicesContent01ImgSrc,
+	servicesContent01ImgAlt,
+	servicesContent01Title,
+	servicesContent01Text,
+	servicesContent01SubTitle,
+	servicesContent01Text02,
+	servicesContent02ImgSrc,
+	servicesContent02ImgAlt,
+	servicesContent02SubTitle,
+	servicesContent02Text,
+	servicesContent02SubTitle02,
+	servicesContent02Text02,
+} = Astro.props;
+---
+
+<div class="flex flex-col items-center gap-[3rem]">
+	<div class="flex flex-col items-center gap-[1rem] md:flex-row">
+		<!-- Imagen arriba en móvil, ajustable en escritorio -->
+		<div class="h-[250px] w-full md:h-[450px] md:w-1/2">
+			<Image
+				src={servicesContent01ImgSrc}
+				alt={servicesContent01ImgAlt}
+				width={1600}
+				height={900}
+				class="h-full w-full rounded object-cover"
+				aria-hidden="true"
+			/>
+		</div>
+		<!-- Texto abajo en móvil, ajustable en escritorio -->
+		<div class="mt-[1rem] flex w-full flex-col gap-[1rem] text-center md:w-1/2">
+			<h2 class="title">{servicesContent01Title}</h2>
+			<p class="main">{servicesContent01Text}</p>
+			<h2 class="title">{servicesContent01SubTitle}</h2>
+			<p class="main">{servicesContent01Text02}</p>
+		</div>
+	</div>
+	<div class="flex flex-col items-center gap-[1rem] md:flex-row-reverse">
+		<!-- Imagen arriba en móvil, ajustable en escritorio -->
+		<div class="h-[250px] w-full md:h-[450px] md:w-1/2">
+			<Image
+				src={servicesContent02ImgSrc}
+				alt={servicesContent02ImgAlt}
+				width={1600}
+				height={900}
+				class="h-full w-full rounded object-cover"
+				aria-hidden="true"
+			/>
+		</div>
+		<!-- Texto abajo en móvil, ajustable en escritorio -->
+		<div class="mt-[1rem] flex w-full flex-col gap-[1rem] text-center md:w-1/2">
+			<h2 class="title">{servicesContent02SubTitle}</h2>
+			<p class="main">{servicesContent02Text}</p>
+			<h2 class="title">{servicesContent02SubTitle02}</h2>
+			<p class="main">{servicesContent02Text02}</p>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,103 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CallToAction from '../components/CallToAction.astro';
+import ServicesContentImageBlock from '../components/ServicesContentImageBlock.astro';
+import Banner from '../components/Banner.astro';
+
+/* ========================== */
+/*           IMAGES           */
+/* ========================== */
+import bgServicios from '../assets/images/bg/bg-servicios.webp';
+import serviciosConsulta from '../assets/images/services/servicios-consulta.webp';
+import serviciosConsulta02 from '../assets/images/services/servicios-consulta02.webp';
+import serviciosPlanes from '../assets/images/services/servicios-planes.webp';
+import serviciosPlanes02 from '../assets/images/services/servicios-planes02.webp';
+import serviciosTalleres from '../assets/images/services/servicios-talleres.webp';
+import serviciosTalleres02 from '../assets/images/services/servicios-talleres02.webp';
+---
+
+<BaseLayout title="Servicios">
+	<!-- ========================== -->
+	<!--           Banner           -->
+	<!-- ========================== -->
+	<section>
+		<Banner
+			bannerSrc={bgServicios}
+			bannerAlt=""
+			bannerPage="Servicios"
+			bannerTitle="Servicios"
+		/>
+	</section>
+	<!-- =========================== -->
+	<!--           Content           -->
+	<!-- =========================== -->
+	<section>
+		<!-- ============================= -->
+		<!--           Servicio 01           -->
+		<!-- =============================== -->
+		<article>
+			<ServicesContentImageBlock
+				servicesContent01ImgSrc={serviciosConsulta}
+				servicesContent01ImgAlt=""
+				servicesContent01Title="Consultas Personalizadas"
+				servicesContent01Text="Te ayudamos a alcanzar tus metas de salud con planes diseñados a tu medida. Analizamos tus hábitos y objetivos para crear una estrategia efectiva, ya sea para mejorar tu salud, bajar de peso o manejar una condición médica."
+				servicesContent01SubTitle="Beneficios que notarás:"
+				servicesContent01Text02="Más energía y mejor rendimiento. Decisiones alimenticias saludables sin complicaciones. Balance entre tu vida personal y tus metas de salud. Apoyo constante para ajustar tu plan según tu progreso."
+				servicesContent02ImgSrc={serviciosConsulta02}
+				servicesContent02ImgAlt=""
+				servicesContent02SubTitle="¿Cómo funciona?"
+				servicesContent02Text="Consulta inicial (60 min): evaluamos tu salud y metas. Plan personalizado: diseñado según tus necesidades. Seguimiento: consultas regulares de 30 min para ajustes."
+				servicesContent02SubTitle02="Preguntas frecuentes:"
+				servicesContent02Text02="Duración de las consultas: inicial de 60 min, seguimiento de 30 min. Modalidad: presencial o virtual, ¡tú eliges!."
+			/>
+		</article>
+		<br />
+		<br />
+		<!-- =============================== -->
+		<!--           Servicio 02           -->
+		<!-- =============================== -->
+		<article>
+			<ServicesContentImageBlock
+				servicesContent01ImgSrc={serviciosPlanes}
+				servicesContent01ImgAlt=""
+				servicesContent01Title="Planes de Alimentación"
+				servicesContent01Text="Diseñamos planes equilibrados que se adaptan a tu rutina y preferencias. Sin dietas extremas, nos enfocamos en alimentos que disfrutes para ayudarte a alcanzar tus metas: perder peso, aumentar energía o mejorar tu rendimiento deportivo."
+				servicesContent01SubTitle="Beneficios:"
+				servicesContent01Text02="Comidas balanceadas que encajan con tu estilo de vida. Recetas rápidas y fáciles sin complicar tu nutrición. Mantén un peso saludable sin restricciones extremas. Olvídate del estrés de decidir qué comer con un plan estructurado."
+				servicesContent02ImgSrc={serviciosPlanes02}
+				servicesContent02ImgAlt=""
+				servicesContent02SubTitle="Preguntas frecuentes:"
+				servicesContent02Text="¿Y si no me gustan ciertos alimentos? Ajustamos el plan a tus gustos y preferencias. ¿Cuánto dura el plan? Diseñamos planes mensuales con ajustes semanales o quincenales según tu progreso."
+				servicesContent02SubTitle02="¿Qué incluye?"
+				servicesContent02Text02="Plan semanal con recetas fáciles de seguir. Lista de compras personalizada. Consejos para optimizar tu tiempo en la cocina."
+			/>
+		</article>
+		<br />
+		<br />
+		<!-- ================================ -->
+		<!--           Servicio 03            -->
+		<!-- ================================ -->
+		<article>
+			<ServicesContentImageBlock
+				servicesContent01ImgSrc={serviciosTalleres}
+				servicesContent01ImgAlt=""
+				servicesContent01Title="Talleres de Nutrición"
+				servicesContent01Text="Aprende a mejorar tu alimentación de forma sencilla y práctica con nuestros talleres. Abordamos temas como “Hábitos alimenticios saludables”, “Nutrición para el rendimiento deportivo” y “Comer saludable en el día a día”. Ideales para empresas, escuelas o grupos que buscan adoptar hábitos saludables."
+				servicesContent01SubTitle="Beneficios que notarás:"
+				servicesContent01Text02="Más energía y mejor rendimiento. Decisiones alimenticias saludables sin complicaciones. Balance entre tu vida personal y tus metas de salud. Apoyo constante para ajustar tu plan según tu progreso."
+				servicesContent02ImgSrc={serviciosTalleres02}
+				servicesContent02ImgAlt=""
+				servicesContent02SubTitle="Beneficios:"
+				servicesContent02Text="Técnicas simples para mejorar tu alimentación sin complicaciones. Pequeños cambios con gran impacto en tu salud a largo plazo. Consejos prácticos para aplicar de inmediato."
+				servicesContent02SubTitle02="Preguntas frecuentes:"
+				servicesContent02Text02="Duración: entre 60 y 90 minutos, según el tema. Modalidad: talleres presenciales y virtuales disponibles. Talleres personalizados: adaptamos el contenido a las necesidades de tu grupo o empresa."
+			/>
+		</article>
+	</section>
+	<!-- ================================== -->
+	<!--           Call To Action           -->
+	<!-- ================================== -->
+	<section>
+		<CallToAction />
+	</section>
+</BaseLayout>

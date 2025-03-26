@@ -1,0 +1,11 @@
+---
+const { btnLink, btnText } = Astro.props;
+---
+
+<a href={btnLink} aria-label={btnText}>
+	<button
+		class="inline-block cursor-pointer rounded bg-[#b2c8e0] px-[1rem] py-[0.5rem] text-base text-white shadow-lg transition-transform duration-200 hover:bg-[#a8e6cf] focus:ring focus:ring-[#a8e6cf] focus:outline-none active:scale-95 xl:text-xl"
+	>
+		{btnText}
+	</button>
+</a>

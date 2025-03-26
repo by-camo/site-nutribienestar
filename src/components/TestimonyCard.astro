@@ -1,0 +1,28 @@
+---
+// components/TestimonyCard.astro
+
+const { testimony } = Astro.props;
+
+if (!testimony || !testimony.data) {
+	throw new Error('No se recibió un testimonio válido en TestimonyCard');
+}
+---
+
+<div
+	class="border-accent flex h-auto w-full flex-col gap-[1rem] rounded border-[0.375rem] p-[1rem] text-center shadow-lg"
+>
+	<div class="flex items-center justify-between gap-[1rem] rounded">
+		<img
+			src={testimony.data.image}
+			alt={`Foto de perfil de ${testimony.data.author}`}
+			class="rounded-[50%] object-cover"
+			width={96}
+			height={96}
+		/>
+		<h2 class="title">{testimony.data.author}</h2>
+		<div class="h-[96px] w-[96px]"></div>
+	</div>
+	<div>
+		<p class="main">{testimony.body}</p>
+	</div>
+</div>

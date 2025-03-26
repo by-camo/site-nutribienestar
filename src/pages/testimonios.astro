@@ -1,0 +1,68 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CallToAction from '../components/CallToAction.astro';
+import TestimonyCard from '../components/TestimonyCard.astro';
+import Banner from '../components/Banner.astro';
+
+/* ========================== */
+/*           IMAGES           */
+/* ========================== */
+import bgTestimonios from '../assets/images/bg/bg-testimonios.webp';
+
+import { getCollection } from 'astro:content';
+
+// Obtenemos los testimonios
+const testimonies = await getCollection('testimonies');
+
+// Ordena los posts por fecha (más reciente primero)
+const sortedTestimonies = testimonies.sort((a, b) => {
+	return (
+		new Date(b.data.date ?? 0).getTime() - new Date(a.data.date ?? 0).getTime()
+	);
+});
+---
+
+<BaseLayout title="Testimonios">
+	<!-- ========================== -->
+	<!--           Banner           -->
+	<!-- ========================== -->
+	<section>
+		<Banner
+			bannerSrc={bgTestimonios}
+			bannerAlt=""
+			bannerPage="Testimonios"
+			bannerTitle="Testimonios"
+		/>
+	</section>
+	<!-- =========================== -->
+	<!--           Content           -->
+	<!-- =========================== -->
+	<!-- <section class="flex flex-col gap-[1rem]">
+		<h2 class="sr-only">Testimonios</h2>
+		<h1 class="heading text-center">Mira lo que dicen de nosotros:</h1>
+		{
+			testimonies.map((post) => (
+				<TestimonyCard
+					name={post.name}
+					image={post.image}
+					comment={post.comment}
+				/>
+			))
+		}
+	</section> -->
+	<section class="flex flex-col gap-[1rem]">
+		<h2 class="sr-only">Testimonios</h2>
+		<h1 class="heading text-center">Mira lo que dicen de nosotros:</h1>
+		{
+			sortedTestimonies.map((testimony) => (
+				<TestimonyCard testimony={testimony} />
+			))
+		}
+	</section>
+	<!-- ================================== -->
+	<!--           Call To Action           -->
+	<!-- ================================== -->
+	<section>
+		<CallToAction />
+	</section>
+</BaseLayout>

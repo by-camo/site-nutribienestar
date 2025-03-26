@@ -1,0 +1,31 @@
+---
+import { Image } from 'astro:assets';
+
+const { bannerSrc, bannerAlt = '', bannerTitle, bannerPage } = Astro.props;
+---
+
+<div
+	id="banner-section"
+	aria-labelledby="banner-heading"
+	class="relative h-[200px] overflow-hidden text-center md:h-[400px]"
+>
+	<h2 id="banner-heading" class="sr-only">
+		{bannerPage}
+	</h2>
+	<div class="relative flex h-full w-full items-center justify-center p-[4rem]">
+		<h1 class="banner">{bannerTitle}</h1>
+	</div>
+	<div class="absolute inset-0 -z-10">
+		<Image
+			src={bannerSrc}
+			alt={bannerAlt || ''}
+			aria-hidden={!bannerAlt}
+			loading="eager"
+			quality={80}
+			width={1600}
+			height={900}
+			class="h-full w-full object-cover opacity-80 blur-xs"
+			priority
+		/>
+	</div>
+</div>

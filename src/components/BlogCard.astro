@@ -1,0 +1,28 @@
+---
+// components/BlogCard.astro
+import CustomButton from './CustomButton.astro';
+
+const { post } = Astro.props;
+
+if (!post) {
+	throw new Error('No se recibió un post en BlogCard');
+}
+---
+
+<div
+	class="border-accent flex h-full w-full flex-col items-center rounded border-[0.375rem] text-center shadow-lg md:flex-row"
+>
+	<div class="relative h-[300px] w-full md:h-[400px]">
+		<img
+			src={post.data.image}
+			alt={post.data.title}
+			class="border-accent h-full w-full border-b-[0.375rem] object-cover md:border-r-[0.375rem] md:border-b-0"
+		/>
+	</div>
+	<div class="flex h-full w-full flex-col gap-[1rem] p-[1rem]">
+		<h2 class="title">{post.data.title}</h2>
+		<span class="leading">{post.data.date}</span>
+		<p class="main">{post.data.summary}</p>
+		<CustomButton btnText="Leer mas" btnLink={`/blog/${post.slug}/`} />
+	</div>
+</div>

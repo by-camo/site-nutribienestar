@@ -1,11 +1,136 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Event from '../components/Event.astro';
+import CallToAction from '../components/CallToAction.astro';
+import ContentImageBlock from '../components/ContentImageBlock.astro';
+import ServiceCard from '../components/ServiceCard.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+/* ========================== */
+/*           IMAGES           */
+/* ========================== */
+import bgIndex from '../assets/images/bg/bg-index.webp';
+import indexMain from '../assets/images/index-main.webp';
+import indexMain02 from '../assets/images/index-main02.webp';
+import serviciosConsulta from '../assets/images/services/servicios-consulta.webp';
+import serviciosPlanes from '../assets/images/services/servicios-planes.webp';
+import serviciosTalleres from '../assets/images/services/servicios-talleres.webp';
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<BaseLayout>
+	<!-- ========================== -->
+	<!--           Banner           -->
+	<!-- ========================== -->
+	<section
+		id="banner-section"
+		role="banner"
+		aria-labelledby="banner-heading"
+		class="relative max-h-[600px] text-center"
+	>
+		<h2 id="banner-heading" class="sr-only">Bienvenido a NutriBienestar</h2>
+		<div
+			class="relative flex h-full w-full items-center justify-center p-[3rem] md:p-[8rem]"
+		>
+			<h1 class="banner">
+				"Tu <span class="styled">camino</span> hacia un estilo
+				<span class="styled">de vida saludable</span> comienza
+				<span class="styled">aquí</span>"
+			</h1>
+		</div>
+		<div class="absolute inset-0 -z-10">
+			<Image
+				src={bgIndex}
+				alt="Un tazón con ensalada de hojas verdes, huevo cocido y pomelo fresco, representando alimentación saludable"
+				loading="eager"
+				quality="75"
+				width={1600}
+				height={900}
+				class="h-full w-full object-cover opacity-80 blur-xs"
+				priority
+			/>
+		</div>
+	</section>
+	<!-- ========================= -->
+	<!--           About           -->
+	<!-- ========================= -->
+	<section>
+		<h1 class="sr-only">Seccion sobre la Dra. Ana Martínez</h1>
+		<ContentImageBlock
+			contentTitle="¡Hola! Soy la Dra. Ana Martínez"
+			contentText="Soy nutrióloga independiente y estoy aquí para ayudarte a alcanzar un bienestar integral."
+			contentText02=" Con mi experiencia en nutrición general, deportiva y terapéutica, ofrezco apoyo personalizado adaptado a tus necesidades y estilo de vida. Cada persona es única, y mi enfoque está basado en entender tus objetivos para crear un plan efectivo."
+			contentImgSrc={indexMain}
+			contentImgAlt=""
+			contentReverse={false}
+		/>
+		<br />
+		<br />
+		<ContentImageBlock
+			contentTitle="Mi enfoque en la nutrición"
+			contentText="Creo en la nutrición como una herramienta para mejorar la salud. Mi compromiso es guiarte de forma sencilla hacia tus metas, ya sea perder peso, mejorar tu digestión o aumentar tu rendimiento deportivo."
+			contentText02="¡Construyamos juntos hábitos saludables y disfrutemos de la comida en el camino!"
+			contentImgSrc={indexMain02}
+			contentImgAlt=""
+			contentReverse={true}
+		/>
+	</section>
+	<!-- ========================= -->
+	<!--           Event           -->
+	<!-- ========================= -->
+	<section>
+		<h1 class="sr-only">Descarga nuestra guia</h1>
+		<Event
+			eventTitle="Empieza tu camino hacia una nutrición saludable"
+			eventText="Descarga nuestra guía gratuita con consejos prácticos para mejorar tus hábitos alimenticios y sentirte mejor cada día."
+		/>
+	</section>
+	<!-- ============================ -->
+	<!--           Services           -->
+	<!-- ============================ -->
+	<section class="flex flex-col gap-[1rem] text-center">
+		<h1 class="sr-only">Servicios</h1>
+		<h2 class="sub-title">Nuestros servicios incluyen:</h2>
+		<div class="flex flex-col xl:gap-[4rem]">
+			<div
+				class="grid grid-cols-2 gap-[2rem] py-[1rem] md:grid-cols-3 xl:grid-cols-3"
+			>
+				<ServiceCard
+					serviceSrc={serviciosConsulta}
+					serviceAlt=""
+					serviceTitle="Consultas personalizadas"
+					serviceText="Cada persona es única, por eso ofrezco consultas personalizadas que se adaptan a tus necesidades y objetivos específicos, ayudándote a alcanzar un bienestar integral."
+				/>
+				<ServiceCard
+					serviceSrc={serviciosPlanes}
+					serviceAlt=""
+					serviceTitle="Planes de alimentación"
+					serviceText="Desarrollo planes de alimentación equilibrados, diseñados especialmente para ti, teniendo en cuenta tus gustos, estilo de vida y metas de salud."
+				/>
+				<ServiceCard
+					serviceSrc={serviciosTalleres}
+					serviceAlt=""
+					serviceTitle="Talleres de nutrición"
+					serviceText="Mis talleres de nutrición te brindan herramientas prácticas y conocimientos clave para adoptar hábitos alimenticios saludables y sostenibles en tu vida diaria."
+				/>
+			</div>
+		</div>
+	</section>
+	<!-- =============================== -->
+	<!--           Testimonies           -->
+	<!-- =============================== -->
+	<!-- <section>
+		<TestimoniesCarousel testimonies={testimonies.slice(0, 3)} />
+	</section> -->
+	<!-- ======================== -->
+	<!--           Blog           -->
+	<!-- ======================== -->
+	<!-- <section class="bg-accent h-auto">
+		<BlogCarousel posts={posts.slice(0, 3)} />
+	</section> -->
+	<!-- ================================== -->
+	<!--           Call To Action           -->
+	<!-- ================================== -->
+	<section>
+		<CallToAction />
+	</section>
+</BaseLayout>

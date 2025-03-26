@@ -1,0 +1,139 @@
+@import 'tailwindcss';
+
+@import '@fontsource-variable/montserrat';
+@import '@fontsource-variable/raleway';
+@import '@fontsource-variable/open-sans';
+
+@theme {
+	/* ========================= */
+	/*           Fonts           */
+	/* ========================= */
+	--font-banner: 'Montserrat Variable';
+	--font-accent: 'Raleway Variable';
+	--font-header: 'Montserrat Variable';
+	--font-main: 'Open Sans Variable';
+
+	/* ========================= */
+	/*           Brand           */
+	/* ========================= */
+	--color-brandPrimary: #b2c8e0;
+	--color-brandSecondary: #a8e6cf;
+	--color-accent: #e5f4f0;
+
+	/* ================================ */
+	/*           Nav - Footer           */
+	/* ================================ */
+	--color-bars: oklch(0.922 0 0);
+
+	/* ========================== */
+	/*           Button           */
+	/* ========================== */
+	--color-btnPrimary: #b2c8e0;
+	--color-btnSecondary: #a8e6cf;
+	--color-btnTertiary: #666666;
+
+	/* =========================== */
+	/*           General           */
+	/* =========================== */
+	--color-primary: #333333; /* Texto principal */
+	--color-secondary: #ffcc00; /* Color para botones secundarios */
+	--color-tertiary: #666666; /* Colores neutrales */
+	--color-success: #28a745; /* Verde para éxito */
+	--color-error: #dc3545; /* Rojo para error */
+	--color-alternate: #f8f9fa; /* Fondo alternativo */
+}
+
+/* ======================== */
+/*           File           */
+/* ======================== */
+:root {
+	--background: #ffffff;
+	--foreground: #171717;
+}
+
+body {
+	/* background: var(--background); */
+	font-family: var(--font-main);
+}
+
+/* ========================= */
+/*           Fonts           */
+/* ========================= */
+.banner {
+	font-family: var(--font-banner);
+	font-size: clamp(3rem, 4vw, 4rem);
+	color: var(--color-neutral-800);
+	line-height: 1;
+	text-transform: capitalize;
+	font-weight: 500;
+}
+
+.styled {
+	font-family: var(--font-accent);
+	color: var(--color-brandSecondary);
+	font-weight: 800;
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.heading {
+	font-family: var(--font-header);
+	font-size: clamp(1.75rem, 2vw, 2.5rem);
+	line-height: 1.2em;
+	color: var(--color-neutral-800);
+	font-weight: 600;
+	/* text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); */
+}
+
+.sub-heading {
+	font-family: var(--font-header);
+	font-size: clamp(1rem, 2vw, 1.5rem);
+	color: var(--color-neutral-700);
+	text-transform: capitalize;
+}
+
+.title {
+	font-family: var(--font-header);
+	font-size: clamp(1.5rem, 2vw, 1.75rem);
+	color: var(--color-neutral-700);
+	font-weight: 500;
+}
+
+.sub-title {
+	font-family: var(--font-header);
+	font-size: clamp(1.25rem, 2vw, 1.75rem);
+	color: var(--color-neutral-600);
+}
+
+.leading {
+	font-family: var(--font-header);
+	font-size: clamp(0.75rem, 2vw, 1rem);
+	color: var(--color-neutral-400);
+	text-transform: uppercase;
+}
+
+.legal-text {
+	font-family: var(--font-header);
+	font-size: clamp(0.5rem, 2vw, 0.75rem);
+	color: var(--color-neutral-400);
+}
+
+.main {
+	font-family: var(--font-main);
+	color: var(--color-neutral-500);
+	font-size: clamp(1rem, 2vw, 1.25rem);
+}
+
+/* ========================= */
+/*           ?           */
+/* ========================= */
+/* Sombra de color de las imagenes */
+.box {
+	box-shadow: 20px -20px 0px rgba(239, 246, 255, 1);
+	border-radius: 8px;
+}
+@media (max-width: 640px) {
+	.box {
+		box-shadow: 10px -10px 0px rgba(239, 246, 255, 1);
+		border-radius: 8px;
+	}
+}
