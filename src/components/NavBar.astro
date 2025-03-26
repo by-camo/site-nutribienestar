@@ -20,15 +20,19 @@ let isMenuOpen = false; // Estado que controla la visibilidad del menú
 		{/* Botón de menú hamburguesa */}
 		<button
 			id="toggleMenuBtn"
-			class="align-center ml-auto flex h-[32px] w-[32px] cursor-pointer items-center justify-center rounded bg-[#b2c8e0] text-white xl:hidden"
+			class="flex h-[32px] w-[32px] cursor-pointer items-center justify-center rounded bg-[#b2c8e0] xl:hidden"
 			aria-label="Abrir menú de navegación"
 			aria-controls="menu-hamburguer"
 			onclick={() => {
 				isMenuOpen = !isMenuOpen;
 			}}
-			{/* Toggle menú */}
+			{/* Toggle menú ☰ */}
 		>
-			☰
+			<img
+				src="/icons/menu_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg"
+				class="p-[10%]"
+				alt=""
+			/>
 		</button>
 	</div>
 
