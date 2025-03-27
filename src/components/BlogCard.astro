@@ -21,7 +21,7 @@ if (!post) {
 	</div>
 	<div class="flex h-full w-full flex-col gap-[1rem] p-[1rem]">
 		<h2 class="title">{post.data.title}</h2>
-		<span class="leading">{post.data.date}</span>
+		<span class="leading -mt-[0.75rem]">{post.data.date}</span>
 		<p class="main">{post.data.summary}</p>
 		<CustomButton btnText="Leer mas" btnLink={`/blog/${post.slug}/`} />
 	</div>

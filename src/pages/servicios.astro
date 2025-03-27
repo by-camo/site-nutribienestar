@@ -1,18 +1,18 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CallToAction from '../components/CallToAction.astro';
-import ServicesContentImageBlock from '../components/ServicesContentImageBlock.astro';
 import Banner from '../components/Banner.astro';
+import { Image } from 'astro:assets';
 
 /* ========================== */
 /*           IMAGES           */
 /* ========================== */
 import bgServicios from '../assets/images/bg/bg-servicios.webp';
-import serviciosConsulta from '../assets/images/services/servicios-consulta.webp';
+import serviciosConsulta01 from '../assets/images/services/servicios-consulta.webp';
 import serviciosConsulta02 from '../assets/images/services/servicios-consulta02.webp';
-import serviciosPlanes from '../assets/images/services/servicios-planes.webp';
+import serviciosPlanes01 from '../assets/images/services/servicios-planes.webp';
 import serviciosPlanes02 from '../assets/images/services/servicios-planes02.webp';
-import serviciosTalleres from '../assets/images/services/servicios-talleres.webp';
+import serviciosTalleres01 from '../assets/images/services/servicios-talleres.webp';
 import serviciosTalleres02 from '../assets/images/services/servicios-talleres02.webp';
 ---
 
@@ -32,66 +32,234 @@ import serviciosTalleres02 from '../assets/images/services/servicios-talleres02.
 	<!--           Content           -->
 	<!-- =========================== -->
 	<section>
-		<!-- ============================= -->
+		<!-- =============================== -->
 		<!--           Servicio 01           -->
 		<!-- =============================== -->
-		<article>
-			<ServicesContentImageBlock
-				servicesContent01ImgSrc={serviciosConsulta}
-				servicesContent01ImgAlt=""
-				servicesContent01Title="Consultas Personalizadas"
-				servicesContent01Text="Te ayudamos a alcanzar tus metas de salud con planes diseñados a tu medida. Analizamos tus hábitos y objetivos para crear una estrategia efectiva, ya sea para mejorar tu salud, bajar de peso o manejar una condición médica."
-				servicesContent01SubTitle="Beneficios que notarás:"
-				servicesContent01Text02="Más energía y mejor rendimiento. Decisiones alimenticias saludables sin complicaciones. Balance entre tu vida personal y tus metas de salud. Apoyo constante para ajustar tu plan según tu progreso."
-				servicesContent02ImgSrc={serviciosConsulta02}
-				servicesContent02ImgAlt=""
-				servicesContent02SubTitle="¿Cómo funciona?"
-				servicesContent02Text="Consulta inicial (60 min): evaluamos tu salud y metas. Plan personalizado: diseñado según tus necesidades. Seguimiento: consultas regulares de 30 min para ajustes."
-				servicesContent02SubTitle02="Preguntas frecuentes:"
-				servicesContent02Text02="Duración de las consultas: inicial de 60 min, seguimiento de 30 min. Modalidad: presencial o virtual, ¡tú eliges!."
-			/>
+		<article class="flex flex-col items-center gap-[3rem]">
+			<div class="flex flex-col items-center gap-[1rem] md:flex-row">
+				<!-- Imagen arriba en móvil, ajustable en escritorio -->
+				<div class="h-[250px] w-full md:h-[450px] md:w-1/2">
+					<Image
+						src={serviciosConsulta01}
+						alt=""
+						width={1600}
+						height={900}
+						class="h-full w-full rounded object-cover"
+						aria-hidden="true"
+					/>
+				</div>
+				<!-- Texto abajo en móvil, ajustable en escritorio -->
+				<div
+					class="mt-[1rem] flex w-full flex-col gap-[1rem] text-center md:w-1/2"
+				>
+					<h2 class="title">Consultas Personalizadas</h2>
+					<p class="main">
+						Te ayudamos a alcanzar tus metas de salud con planes diseñados a tu
+						medida. Analizamos tus hábitos y objetivos para crear una estrategia
+						efectiva, ya sea para mejorar tu salud, bajar de peso o manejar una
+						condición médica.
+					</p>
+					<h2 class="title">Beneficios:</h2>
+					<ul class="main flex list-inside list-disc flex-col gap-2">
+						<li>Más energía y mejor rendimiento.</li>
+						<li>Decisiones alimenticias saludables sin complicaciones.</li>
+						<li>Balance entre tu vida personal y tus metas de salud.</li>
+						<li>Apoyo constante para ajustar tu plan según tu progreso.</li>
+					</ul>
+				</div>
+				<div class="flex flex-col items-center gap-[1rem] md:flex-row-reverse">
+					<!-- Imagen arriba en móvil, ajustable en escritorio -->
+					<div class="h-[250px] w-full md:h-[450px] md:w-1/2">
+						<Image
+							src={serviciosConsulta02}
+							alt=""
+							width={1600}
+							height={900}
+							class="h-full w-full rounded object-cover"
+							aria-hidden="true"
+						/>
+					</div>
+					<!-- Texto abajo en móvil, ajustable en escritorio -->
+					<div
+						class="mt-[1rem] flex w-full flex-col gap-[1rem] text-center md:w-1/2"
+					>
+						<h2 class="title">Preguntas frecuentes:</h2>
+						<ul class="main flex flex-col gap-[0.5rem]">
+							<dt class="font-bold">Duración de las consultas:</dt>
+							<dd>Inicial de 60 min, seguimiento de 30 min</dd>
+							<dt class="font-bold">Modalidad:</dt>
+							<dd>Presencial o virtual, ¡tú eliges!</dd>
+						</ul>
+						<h2 class="title">¿Cómo funciona?</h2>
+						<ul class="main flex flex-col gap-[0.5rem]">
+							<dt class="font-bold">Consulta inicial (60 min):</dt>
+							<dd>Evaluamos tu salud y metas</dd>
+							<dt class="font-bold">Plan personalizado:</dt>
+							<dd>Diseñado según tus necesidades</dd>
+							<dt class="font-bold">Seguimiento:</dt>
+							<dd>Consultas regulares de 30 min para ajustes</dd>
+						</ul>
+					</div>
+				</div>
+			</div>
 		</article>
 		<br />
 		<br />
 		<!-- =============================== -->
 		<!--           Servicio 02           -->
 		<!-- =============================== -->
-		<article>
-			<ServicesContentImageBlock
-				servicesContent01ImgSrc={serviciosPlanes}
-				servicesContent01ImgAlt=""
-				servicesContent01Title="Planes de Alimentación"
-				servicesContent01Text="Diseñamos planes equilibrados que se adaptan a tu rutina y preferencias. Sin dietas extremas, nos enfocamos en alimentos que disfrutes para ayudarte a alcanzar tus metas: perder peso, aumentar energía o mejorar tu rendimiento deportivo."
-				servicesContent01SubTitle="Beneficios:"
-				servicesContent01Text02="Comidas balanceadas que encajan con tu estilo de vida. Recetas rápidas y fáciles sin complicar tu nutrición. Mantén un peso saludable sin restricciones extremas. Olvídate del estrés de decidir qué comer con un plan estructurado."
-				servicesContent02ImgSrc={serviciosPlanes02}
-				servicesContent02ImgAlt=""
-				servicesContent02SubTitle="Preguntas frecuentes:"
-				servicesContent02Text="¿Y si no me gustan ciertos alimentos? Ajustamos el plan a tus gustos y preferencias. ¿Cuánto dura el plan? Diseñamos planes mensuales con ajustes semanales o quincenales según tu progreso."
-				servicesContent02SubTitle02="¿Qué incluye?"
-				servicesContent02Text02="Plan semanal con recetas fáciles de seguir. Lista de compras personalizada. Consejos para optimizar tu tiempo en la cocina."
-			/>
+		<article class="flex flex-col items-center gap-[3rem]">
+			<div class="flex flex-col items-center gap-[1rem] md:flex-row">
+				<!-- Imagen arriba en móvil, ajustable en escritorio -->
+				<div class="h-[250px] w-full md:h-[450px] md:w-1/2">
+					<Image
+						src={serviciosPlanes01}
+						alt=""
+						width={1600}
+						height={900}
+						class="h-full w-full rounded object-cover"
+						aria-hidden="true"
+					/>
+				</div>
+				<!-- Texto abajo en móvil, ajustable en escritorio -->
+				<div
+					class="mt-[1rem] flex w-full flex-col gap-[1rem] text-center md:w-1/2"
+				>
+					<h2 class="title">Planes de Alimentación</h2>
+					<p class="main">
+						Diseñamos planes equilibrados que se adaptan a tu rutina y
+						preferencias. Sin dietas extremas, nos enfocamos en alimentos que
+						disfrutes para ayudarte a alcanzar tus metas:
+					</p>
+					<ul class="main flex list-inside list-disc flex-col gap-2">
+						<li>Perder peso</li>
+						<li>Aumentar energía</li>
+						<li>Mejorar tu rendimiento deportivo</li>
+					</ul>
+					<h2 class="title">Beneficios:</h2>
+					<ul class="main flex list-inside list-disc flex-col gap-2">
+						<li>Comidas balanceadas que encajan con tu estilo de vida</li>
+						<li>Recetas rápidas y fáciles sin complicar tu nutrición</li>
+						<li>Mantén un peso saludable sin restricciones extremas</li>
+						<li>
+							Olvídate del estrés de decidir qué comer con un plan estructurado
+						</li>
+					</ul>
+				</div>
+				<div class="flex flex-col items-center gap-[1rem] md:flex-row-reverse">
+					<!-- Imagen arriba en móvil, ajustable en escritorio -->
+					<div class="h-[250px] w-full md:h-[450px] md:w-1/2">
+						<Image
+							src={serviciosPlanes02}
+							alt=""
+							width={1600}
+							height={900}
+							class="h-full w-full rounded object-cover"
+							aria-hidden="true"
+						/>
+					</div>
+					<!-- Texto abajo en móvil, ajustable en escritorio -->
+					<div
+						class="mt-[1rem] flex w-full flex-col gap-[1rem] text-center md:w-1/2"
+					>
+						<h2 class="title">Preguntas frecuentes:</h2>
+						<ul class="main flex list-inside list-disc flex-col gap-2">
+							<dt class="font-bold">¿Y si no me gustan ciertos alimentos?</dt>
+							<dd>Ajustamos el plan a tus gustos y preferencias</dd>
+							<dt class="font-bold">¿Cuánto dura el plan?</dt>
+							<dd>
+								Diseñamos planes mensuales con ajustes semanales o quincenales
+								según tu progreso
+							</dd>
+						</ul>
+						<h2 class="title">¿Qué incluye?</h2>
+						<ul class="main flex list-inside list-disc flex-col gap-2">
+							<li>Plan semanal con recetas fáciles de seguir</li>
+							<li>Lista de compras personalizada</li>
+							<li>Consejos para optimizar tu tiempo en la cocina</li>
+						</ul>
+					</div>
+				</div>
+			</div>
 		</article>
 		<br />
 		<br />
 		<!-- ================================ -->
 		<!--           Servicio 03            -->
 		<!-- ================================ -->
-		<article>
-			<ServicesContentImageBlock
-				servicesContent01ImgSrc={serviciosTalleres}
-				servicesContent01ImgAlt=""
-				servicesContent01Title="Talleres de Nutrición"
-				servicesContent01Text="Aprende a mejorar tu alimentación de forma sencilla y práctica con nuestros talleres. Abordamos temas como “Hábitos alimenticios saludables”, “Nutrición para el rendimiento deportivo” y “Comer saludable en el día a día”. Ideales para empresas, escuelas o grupos que buscan adoptar hábitos saludables."
-				servicesContent01SubTitle="Beneficios que notarás:"
-				servicesContent01Text02="Más energía y mejor rendimiento. Decisiones alimenticias saludables sin complicaciones. Balance entre tu vida personal y tus metas de salud. Apoyo constante para ajustar tu plan según tu progreso."
-				servicesContent02ImgSrc={serviciosTalleres02}
-				servicesContent02ImgAlt=""
-				servicesContent02SubTitle="Beneficios:"
-				servicesContent02Text="Técnicas simples para mejorar tu alimentación sin complicaciones. Pequeños cambios con gran impacto en tu salud a largo plazo. Consejos prácticos para aplicar de inmediato."
-				servicesContent02SubTitle02="Preguntas frecuentes:"
-				servicesContent02Text02="Duración: entre 60 y 90 minutos, según el tema. Modalidad: talleres presenciales y virtuales disponibles. Talleres personalizados: adaptamos el contenido a las necesidades de tu grupo o empresa."
-			/>
+		<article class="flex flex-col items-center gap-[3rem]">
+			<div class="flex flex-col items-center gap-[1rem] md:flex-row">
+				<!-- Imagen arriba en móvil, ajustable en escritorio -->
+				<div class="h-[250px] w-full md:h-[450px] md:w-1/2">
+					<Image
+						src={serviciosTalleres01}
+						alt=""
+						width={1600}
+						height={900}
+						class="h-full w-full rounded object-cover"
+						aria-hidden="true"
+					/>
+				</div>
+				<!-- Texto abajo en móvil, ajustable en escritorio -->
+				<div
+					class="mt-[1rem] flex w-full flex-col gap-[1rem] text-center md:w-1/2"
+				>
+					<h2 class="title">Talleres de Nutrición</h2>
+					<p class="main">
+						Aprende a mejorar tu alimentación de forma sencilla y práctica con
+						nuestros talleres. Abordamos temas como “Hábitos alimenticios
+						saludables”, “Nutrición para el rendimiento deportivo” y “Comer
+						saludable en el día a día”. Ideales para empresas, escuelas o grupos
+						que buscan adoptar hábitos saludables.
+					</p>
+					<h2 class="title">Beneficios:</h2>
+					<ul class="main flex list-inside list-disc flex-col gap-2">
+						<li>Más energía y mejor rendimiento</li>
+						<li>Decisiones alimenticias saludables sin complicaciones</li>
+						<li>Balance entre tu vida personal y tus metas de salud</li>
+						<li>Apoyo constante para ajustar tu plan según tu progreso</li>
+					</ul>
+				</div>
+				<div class="flex flex-col items-center gap-[1rem] md:flex-row-reverse">
+					<!-- Imagen arriba en móvil, ajustable en escritorio -->
+					<div class="h-[250px] w-full md:h-[450px] md:w-1/2">
+						<Image
+							src={serviciosTalleres02}
+							alt=""
+							width={1600}
+							height={900}
+							class="h-full w-full rounded object-cover"
+							aria-hidden="true"
+						/>
+					</div>
+					<!-- Texto abajo en móvil, ajustable en escritorio -->
+					<div
+						class="mt-[1rem] flex w-full flex-col gap-[1rem] text-center md:w-1/2"
+					>
+						<h2 class="title">Preguntas frecuentes:</h2>
+						<ul class="main flex list-inside list-disc flex-col gap-2">
+							<dt class="font-bold">Duración:</dt>
+							<dd>entre 60 y 90 minutos, según el tema</dd>
+							<dt class="font-bold">Modalidad:</dt>
+							<dd>talleres presenciales y virtuales disponibles</dd>
+							<dt class="font-bold">Talleres personalizados:</dt>
+							<dd>
+								adaptamos el contenido a las necesidades de tu grupo o empresa
+							</dd>
+						</ul>
+						<h2 class="title">Puntos clave</h2>
+						<ul class="main flex list-inside list-disc flex-col gap-2">
+							<li>
+								Técnicas simples para mejorar tu alimentación sin complicaciones
+							</li>
+							<li>
+								Pequeños cambios con gran impacto en tu salud a largo plazo
+							</li>
+							<li>Consejos prácticos para aplicar de inmediato</li>
+						</ul>
+					</div>
+				</div>
+			</div>
 		</article>
 	</section>
 	<!-- ================================== -->

@@ -61,7 +61,7 @@ body {
 /* ========================= */
 .banner {
 	font-family: var(--font-banner);
-	font-size: clamp(2.5rem, 4vw, 4rem);
+	font-size: clamp(2.25rem, 4vw, 4rem);
 	color: var(--color-neutral-800);
 	line-height: 1;
 	text-transform: capitalize;
