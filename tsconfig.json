@@ -5,10 +5,16 @@
 		"module": "ESNext",
 		"moduleResolution": "Node",
 		"strict": true,
-		"jsx": "react",
 		"esModuleInterop": true,
-		"verbatimModuleSyntax": true
+		"verbatimModuleSyntax": true,
+		"allowJs": true,
+		"checkJs": true,
+		"resolveJsonModule": true,
+		"isolatedModules": true,
+		"noEmit": true,
+		"jsx": "preserve",
+		"types": ["astro/client"]
 	},
-	"include": [".astro/types.d.ts", "src/**/*"],
+	"include": [".astro/types.d.ts", "src/**/*", "src/content.config.ts"],
 	"exclude": ["dist"]
 }

@@ -1,0 +1,151 @@
+---
+interface Props {
+	posts: Array<any>;
+}
+
+const { posts } = Astro.props;
+---
+
+<div class="relative flex max-w-full overflow-hidden">
+	<div>
+		<button
+			class="absolute bottom-10 left-[10px] z-20 transform cursor-pointer border-0 text-[100px] text-neutral-600 opacity-50"
+			id="prevButtonBlogCarousel"
+			aria-label="Boton para antes">‹</button
+		>
+	</div>
+	<div
+		class="ml-[calc(50%-175px)] flex h-[200px] items-center gap-[24rem] transition-transform duration-300 ease-in-out md:ml-[calc(50%-250px)]"
+		id="blogCarouselWrapper"
+	>
+		{
+			posts.map((post) => (
+				<div
+					class="blog-carousel__item flex shrink-0 flex-col gap-[2rem] text-center"
+					key={post.id}
+				>
+					<div class="flex w-[350px] flex-col md:w-[500px]">
+						<a href={`/blog/${post.id}/`} class="flex flex-col gap-[1rem]">
+							<h3 class="title">{post.data.title}</h3>
+							<p class="main">{post.data.summary}</p>
+						</a>
+					</div>
+				</div>
+			))
+		}
+	</div>
+	<div>
+		<button
+			class="absolute right-[10px] bottom-10 z-20 transform cursor-pointer border-0 text-[100px] text-neutral-600 opacity-50"
+			id="nextButtonBlogCarousel"
+			aria-label="Boton para siguiente">›</button
+		>
+	</div>
+</div>
+
+<script>
+	document.addEventListener('DOMContentLoaded', () => {
+		(() => {
+			let currentIndex = 0;
+			const wrapper = document.getElementById('blogCarouselWrapper');
+			const items = document.querySelectorAll('.blog-carousel__item');
+			const totalItems = items.length;
+			const gap = 380; // Espaciado entre los artículos
+
+			// Función para actualizar el desplazamiento del carrusel
+			const updateCarousel = () => {
+				const itemWidth = items[0].offsetWidth + gap; // Ancho de los artículos + espaciado
+				const offset = currentIndex * itemWidth;
+				wrapper.style.transform = `translateX(-${offset}px)`; // Desplazamiento con transform
+			};
+
+			// Función para avanzar al siguiente post
+			const nextPost = () => {
+				if (currentIndex < totalItems - 1) {
+					currentIndex++;
+				} else {
+					currentIndex = 0; // Regresar al inicio si estamos en el último
+				}
+				updateCarousel();
+			};
+
+			// Función para retroceder al post anterior
+			const prevPost = () => {
+				if (currentIndex > 0) {
+					currentIndex--;
+				} else {
+					currentIndex = totalItems - 1; // Ir al final si estamos en el primero
+				}
+				updateCarousel();
+			};
+
+			// Asignar los eventos de las flechas
+			const nextButton = document.getElementById('nextButtonBlogCarousel');
+			const prevButton = document.getElementById('prevButtonBlogCarousel');
+
+			nextButton.addEventListener('click', nextPost);
+			prevButton.addEventListener('click', prevPost);
+
+			// Inicializar el carrusel
+			updateCarousel();
+		})();
+	});
+</script>
+
+<style>
+	/* Ajustar la altura para pantallas más pequeñas */
+	/* 
+	@media (max-width: 599px) {
+		.blog__carousel-wrapper {
+			height: 450px;
+			margin-left: calc(50% - 170px);
+			gap: 48rem;
+		}
+	}
+
+	@media (min-width: 600px) {
+		.blog__carousel-wrapper {
+			height: 500px;
+			margin-left: calc(50% - 180px);
+			gap: 48rem;
+		}
+		.blog-carousel__item {
+			width: 500px;
+		}
+	}
+
+	@media (min-width: 768px) {
+		.blog__carousel-wrapper {
+			height: 400px;
+			margin-left: calc(50% - 250px);
+			gap: 48rem;
+		}
+
+		.carousel-content {
+			width: 500px;
+		}
+	}
+
+	@media (min-width: 900px) {
+		.blog__carousel-wrapper {
+			margin-left: calc(50% - 350px);
+			gap: 48rem;
+		}
+
+		.carousel-content {
+			width: 700px;
+		}
+	}
+
+	@media (min-width: 1024px) {
+		.blog__carousel-wrapper {
+			height: 300px;
+			margin-left: calc(50% - 400px);
+			gap: 48rem;
+		}
+
+		.carousel-content {
+			width: 800px;
+		}
+	} */
+</style>

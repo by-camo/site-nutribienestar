@@ -11,4 +11,9 @@ export default defineConfig({
 		plugins: [tailwindcss()],
 	},
 	integrations: [mdx(), sitemap()],
+	// Content: {
+	// 	Collections: {
+	// 		Testimonies: './src/content/testimonies',
+	// 	},
+	// },
 });

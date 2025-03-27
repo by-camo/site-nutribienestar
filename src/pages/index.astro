@@ -1,10 +1,13 @@
 ---
+import { getCollection } from 'astro:content';
 import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Event from '../components/Event.astro';
 import CallToAction from '../components/CallToAction.astro';
 import ContentImageBlock from '../components/ContentImageBlock.astro';
 import ServiceCard from '../components/ServiceCard.astro';
+import BlogCarousel from '../components/BlogCarousel.astro';
+import TestimoniesCarousel from '../components/TestimoniesCarousel.astro';
 
 /* ========================== */
 /*           IMAGES           */
@@ -16,9 +19,21 @@ import serviciosConsulta from '../assets/images/services/servicios-consulta.webp
 import serviciosPlanes from '../assets/images/services/servicios-planes.webp';
 import serviciosTalleres from '../assets/images/services/servicios-talleres.webp';
 import CustomBrandButton from '../components/CustomBrandButton.astro';
+
+/* BLOG */
+const posts = await getCollection('posts');
+const limitedPosts = posts.slice(0, 3);
+// console.log('Limited Posts:', limitedPosts)
+
+/* TESTIMONIES */
+const testimonials = await getCollection('testimonies');
+// const limitedTestimonies = testimonies.slice(0, 3);
+
+const realTestimonials = testimonials.map((t) => t.data);
+const limitedTestimonials = realTestimonials.slice(0, 3);
 ---
 
-<BaseLayout>
+<BaseLayout title="Index">
 	<!-- ========================== -->
 	<!--           Banner           -->
 	<!-- ========================== -->
@@ -124,15 +139,37 @@ import CustomBrandButton from '../components/CustomBrandButton.astro';
 	<!-- =============================== -->
 	<!--           Testimonies           -->
 	<!-- =============================== -->
-	<!-- <section>
-		<TestimoniesCarousel testimonies={testimonies.slice(0, 3)} />
-	</section> -->
+	<section id="testimonials-section" class="testimonies">
+		<h2 id="testimonials-heading" class="text__label">Testimonios</h2>
+		<TestimoniesCarousel testimonies={limitedTestimonials} />
+		<div>
+			<a
+				href="/blog"
+				class="bg-brandPrimary focus:ring-brandPrimary mx-auto mb-[2rem] flex cursor-pointer gap-[0.5rem] rounded px-[1rem] py-[0.5rem] text-white shadow-lg transition-transform duration-200 hover:bg-neutral-600 focus:ring focus:outline-none active:scale-95"
+				aria-label="Leer más artículos sobre nutrición y bienestar"
+			>
+				¡Mira lo que dicen de mí!
+			</a>
+		</div>
+	</section>
 	<!-- ======================== -->
 	<!--           Blog           -->
 	<!-- ======================== -->
-	<!-- <section class="bg-accent h-auto">
-		<BlogCarousel posts={posts.slice(0, 3)} />
-	</section> -->
+	<section
+		id="blog-section"
+		class="blog bg-accent flex flex-col gap-[1rem] text-center"
+	>
+		<h2 id="blog-heading" class="sr-only">Blog Tips</h2>
+		<h3 class="leading mt-[2rem]">Últimos Posts</h3>
+		<BlogCarousel posts={limitedPosts} />
+		<a
+			href="/blog"
+			class="bg-brandPrimary focus:ring-brandPrimary mx-auto mb-[2rem] flex cursor-pointer gap-[0.5rem] rounded px-[1rem] py-[0.5rem] text-white shadow-lg transition-transform duration-200 hover:bg-neutral-600 focus:ring focus:outline-none active:scale-95"
+			aria-label="Leer más artículos sobre nutrición y bienestar"
+		>
+			¡Inspírate con mis consejos!
+		</a>
+	</section>
 	<!-- ================================== -->
 	<!--           Call To Action           -->
 	<!-- ================================== -->

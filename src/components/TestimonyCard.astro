@@ -3,7 +3,9 @@
 
 const { testimony } = Astro.props;
 
-if (!testimony || !testimony.data) {
+// const { testimony } = Astro.props;
+
+if (!testimony) {
 	throw new Error('No se recibió un testimonio válido en TestimonyCard');
 }
 ---
@@ -23,6 +25,6 @@ if (!testimony || !testimony.data) {
 		<div class="h-[96px] w-[96px]"></div>
 	</div>
 	<div>
-		<p class="main">{testimony.body}</p>
+		<p class="main">{testimony.data.body}</p>
 	</div>
 </div>

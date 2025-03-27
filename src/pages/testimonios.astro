@@ -12,10 +12,13 @@ import bgTestimonios from '../assets/images/bg/bg-testimonios.webp';
 import { getCollection } from 'astro:content';
 
 // Obtenemos los testimonios
-const testimonies = await getCollection('testimonies');
+// const testimonies = await getCollection('testimonies');
+const testimonials = await getCollection('testimonies');
+
+const realTestimonials = testimonials.map((t) => t.data);
 
 // Ordena los posts por fecha (más reciente primero)
-const sortedTestimonies = testimonies.sort((a, b) => {
+const sortedTestimonies = testimonials.sort((a, b) => {
 	return (
 		new Date(b.data.date ?? 0).getTime() - new Date(a.data.date ?? 0).getTime()
 	);

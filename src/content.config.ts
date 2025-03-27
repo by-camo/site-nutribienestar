@@ -13,11 +13,12 @@ const blogCollection = defineCollection({
 });
 
 const testimoniesCollection = defineCollection({
-	schema: z.object({
-		author: z.string(),
-		date: z.string(),
-		image: z.string(),
-	}),
+  schema: z.object({
+    author: z.string(),
+    date: z.string(),
+    image: z.string(),
+    body: z.string(),
+  }),
 });
 
 export const collections = {
