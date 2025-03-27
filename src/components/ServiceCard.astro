@@ -16,7 +16,9 @@ const { serviceSrc, serviceAlt, serviceTitle, serviceText } = Astro.props;
 		/>
 	</div>
 	<div class="flex flex-col gap-[1rem]">
-		<h2 class="title capitalize">{serviceTitle}</h2>
+		<h2 class="title text-brandPrimary textShadow capitalize">
+			{serviceTitle}
+		</h2>
 		<p class="main">{serviceText}</p>
 	</div>
 </article>

@@ -12,14 +12,13 @@ export async function getStaticPaths() {
 	}));
 }
 
-// const post = posts.find((p) => p.slug === Astro.params.slug);
-
-// Obtener el post actual según la URL
 const { post } = Astro.props;
 
 if (!post) {
 	throw new Error('Post no encontrado');
 }
+
+const { Content } = await post.render();
 ---
 
 <BlogLayout title={post.data.title}>
@@ -28,14 +27,18 @@ if (!post) {
 			<img
 				src={post.data.image}
 				alt={post.data.title}
-				class="h-full w-full object-cover"
+				class="h-full w-full rounded object-cover"
 			/>
 		</div>
 		<div>
-			<h1 class="heading text-center">{post.data.title}</h1>
-			<small>{new Date(post.data.date).toLocaleDateString()}</small>
-			<article>
-				{post.body}
+			<h1 class="heading text-brandPrimary textShadow text-center">
+				{post.data.title}
+			</h1>
+			<small class="leading"
+				>{new Date(post.data.date).toLocaleDateString()}</small
+			>
+			<article class="main mt-[1rem] text-center">
+				<Content />
 			</article>
 		</div>
 	</div>

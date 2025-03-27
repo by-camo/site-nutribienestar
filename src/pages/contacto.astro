@@ -1,6 +1,5 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import ContentImageBlock from '../components/ContentImageBlock.astro';
 import Banner from '../components/Banner.astro';
 
 /* ========================== */
@@ -40,7 +39,9 @@ import { Image } from 'astro:assets';
 				/>
 			</figure>
 			<div class="flex w-full flex-col gap-[1rem] text-center md:w-1/2">
-				<h2 class="title">¡Me encantaría saber de ti!</h2>
+				<h2 class="title text-brandPrimary textShadow">
+					¡Me encantaría saber de ti!
+				</h2>
 				<p class="sub-title">Puedes contactarme a través:</p>
 				<ul class="main flex flex-col gap-2">
 					<dt class="font-bold">Mi correo electrónico:</dt>
@@ -66,7 +67,9 @@ import { Image } from 'astro:assets';
 				/>
 			</figure>
 			<div class="flex w-full flex-col gap-[1rem] text-center md:w-1/2">
-				<h2 class="title">¿Tienes dudas o preguntas?</h2>
+				<h2 class="title text-brandPrimary textShadow">
+					¿Tienes dudas o preguntas?
+				</h2>
 				<p class="main">
 					Además, si tienes preguntas sobre mis servicios, deseas más
 					información sobre talleres o simplemente quieres charlar sobre cómo

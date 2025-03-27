@@ -18,7 +18,8 @@
 	/* ========================= */
 	--color-brandPrimary: #b2c8e0;
 	--color-brandSecondary: #a8e6cf;
-	--color-accent: #e5f4f0;
+	/* --color-accent: #e5f4f0; */
+	--color-accent: #a8e6cf25;
 
 	/* ================================ */
 	/*           Nav - Footer           */
@@ -72,16 +73,14 @@ body {
 	font-family: var(--font-accent);
 	color: var(--color-brandSecondary);
 	font-weight: 800;
-	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .heading {
 	font-family: var(--font-header);
 	font-size: clamp(1.75rem, 2vw, 2.5rem);
 	line-height: 1.2em;
-	color: var(--color-neutral-800);
 	font-weight: 600;
-	/* text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); */
 }
 
 .sub-heading {
@@ -93,15 +92,15 @@ body {
 
 .title {
 	font-family: var(--font-header);
-	font-size: clamp(1.75rem, 2vw, 2rem);
-	color: var(--color-neutral-700);
-	font-weight: 500;
+	font-size: clamp(1.5rem, 2vw, 2.25rem);
+	font-weight: 600;
 }
 
 .sub-title {
 	font-family: var(--font-header);
-	font-size: clamp(1.25rem, 2vw, 1.75rem);
+	font-size: clamp(1.25rem, 2vw, 1.5rem);
 	color: var(--color-neutral-600);
+	font-weight: 500;
 }
 
 .leading {
@@ -124,9 +123,14 @@ body {
 	line-height: 1.2;
 }
 
-/* ========================= */
+.textShadow {
+	text-shadow: #171717;
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* ===================== */
 /*           ?           */
-/* ========================= */
+/* ===================== */
 /* Sombra de color de las imagenes */
 .box {
 	box-shadow: 20px -20px 0px rgba(239, 246, 255, 1);

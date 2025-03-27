@@ -30,7 +30,9 @@ const {
 
 	<!-- Texto abajo en móvil, ajustable en escritorio -->
 	<div class="flex w-full flex-col gap-[1rem] text-center md:w-1/2">
-		<h2 class="title">{contentTitle}</h2>
+		<h2 class="title text-brandPrimary textShadow">
+			{contentTitle}
+		</h2>
 		<p class="main">{contentText01}</p>
 		{contentText02 && <p class="main">{contentText02}</p>}
 		{contentText03 && <p class="main">{contentText03}</p>}
