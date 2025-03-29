@@ -1,179 +1,91 @@
 ---
-// import TestimonyCard from './TestimonyCard.astro'
 import TestimonyCard from '../components/TestimonyCard.astro';
 import { getCollection } from 'astro:content';
+
 const testimonials = await getCollection('testimonies');
-const realTestimonials = testimonials.map((t) => t.data);
-// Ordena los posts por fecha (más reciente primero)
-const sortedTestimonies = testimonials.sort((a, b) => {
-	return (
-		new Date(b.data.date ?? 0).getTime() - new Date(a.data.date ?? 0).getTime()
-	);
-});
-// const { testimonies } = Astro.props;
 
-// Carga la colección de testimonios
-// const testimonials = await getCollection('testimonies');
-// console.log('Testimonios:', testimonials);
-
-// Accede a los datos reales desde `testimonials[0].data.testimonials`
-// const realTestimonials = testimonials.map((testimony) => testimony.data);
-
-// Limitar los testimonios a los primeros 3
-// const limitedTestimonials = realTestimonials.slice(0, 3);
+// Ordena los testimonios por fecha (más reciente primero) y limita a 3
+const sortedTestimonies = testimonials
+	.sort(
+		(a, b) =>
+			new Date(b.data.date ?? 0).getTime() -
+			new Date(a.data.date ?? 0).getTime()
+	)
+	.slice(0, 3);
 ---
 
-<div class="testimonies__carousel">
-	<button class="carousel__button prev" id="prevButtonTestimoniesCarousel"
-		>‹</button
+<div class="relative flex h-[400px] max-w-full flex-col overflow-hidden">
+	<div>
+		<button
+			class="absolute bottom-35 left-[10px] z-20 transform cursor-pointer border-0 text-[100px] text-neutral-600 opacity-50"
+			id="prevButtonTestimoniesCarousel"
+			aria-label="Botón anterior">‹</button
+		>
+	</div>
+
+	<div
+		class="ml-[calc(50%-180px)] flex h-full items-center gap-[4rem] transition-transform duration-300 ease-in-out"
+		id="testimoniesCarouselWrapper"
 	>
-	<div class="testimonies__carousel-wrapper" id="testimoniesCarouselWrapper">
 		{
 			sortedTestimonies.map((testimony) => (
 				<TestimonyCard testimony={testimony} />
 			))
 		}
-		<!-- {
-			testimonies.length > 0 ? (
-				<div>
-					{testimonies.map((testimony) => (
-						<TestimonyCard key={testimony.author} testimony={testimony} />
-					))}
-				</div>
-			) : (
-				<p>No testimonios disponibles.</p>
-			)
-		} -->
 	</div>
-	<button class="carousel__button next" id="nextButtonTestimoniesCarousel"
-		>›</button
-	>
+	<div>
+		<button
+			class="absolute right-[35px] bottom-35 z-20 transform cursor-pointer border-0 text-[100px] text-neutral-600 opacity-50"
+			id="nextButtonTestimoniesCarousel"
+			aria-label="Botón siguiente">›</button
+		>
+	</div>
 </div>
 
 <script>
 	document.addEventListener('DOMContentLoaded', () => {
-		(() => {
-			let currentIndex = 0;
-			const items = document.querySelectorAll('.testimonies-carousel__item');
-			const wrapper = document.getElementById('testimoniesCarouselWrapper');
-			const totalItems = items.length;
-			const gap = 65; // Espaciado entre cartas
+		const wrapper = document.getElementById('testimoniesCarouselWrapper');
+		const items = Array.from(wrapper.children); // Obtiene los testimonios como un array
+		let currentIndex = 0;
+		const totalItems = items.length;
+		const gap = 65; // Espaciado entre testimonios
 
-			// Función para actualizar la posición del carrusel
-			const updateCarousel = () => {
-				const itemWidth = items[0].offsetWidth;
-				const offset = currentIndex * (itemWidth + gap); // Desplazamiento en base al índice
+		// Agregar clase a cada item
+		items.forEach((item) => item.classList.add('testimonies-carousel__item'));
 
-				// Aplicar el desplazamiento con flexbox
-				wrapper.style.transform = `translateX(-${offset}px)`;
+		const updateCarousel = () => {
+			const itemWidth = items[0].offsetWidth;
+			const offset = currentIndex * (itemWidth + gap);
 
-				// Añadir la clase 'focused' a la carta en foco
-				items.forEach((item, index) => {
-					if (index === currentIndex) {
-						item.classList.add('focused');
-					} else {
-						item.classList.remove('focused');
-					}
-				});
-			};
+			wrapper.style.transform = `translateX(-${offset}px)`;
 
-			// Función para avanzar al siguiente testimonio
-			const nextTestimony = () => {
+			// Resaltar el testimonio en foco
+			items.forEach((item, index) => {
+				item.classList.toggle('focused', index === currentIndex);
+			});
+		};
+
+		document
+			.getElementById('nextButtonTestimoniesCarousel')
+			.addEventListener('click', () => {
 				currentIndex = (currentIndex + 1) % totalItems;
 				updateCarousel();
-			};
+			});
 
-			// Función para retroceder al testimonio anterior
-			const prevTestimony = () => {
+		document
+			.getElementById('prevButtonTestimoniesCarousel')
+			.addEventListener('click', () => {
 				currentIndex = (currentIndex - 1 + totalItems) % totalItems;
 				updateCarousel();
-			};
+			});
 
-			// Asignar los eventos de las flechas
-			document
-				.getElementById('nextButtonTestimoniesCarousel')
-				.addEventListener('click', nextTestimony);
-			document
-				.getElementById('prevButtonTestimoniesCarousel')
-				.addEventListener('click', prevTestimony);
-
-			// Inicializar el carrusel
-			updateCarousel();
-		})();
+		updateCarousel(); // Inicializar carrusel
 	});
 </script>
 
 <style>
-	.testimonies__carousel {
-		display: flex;
-		max-width: 100%;
-		position: relative;
-		overflow: hidden; /* Ocultar el desbordamiento de las cartas */
-	}
-
-	.testimonies__carousel-wrapper {
-		display: flex;
-		min-height: 520px;
-		align-items: center;
-		margin-left: calc(50% - 180px);
-		gap: 4rem;
-		transition: transform 0.5s ease;
-	}
-
-	.testimonies-carousel__item {
-		min-width: 360px;
-		transition: transform 0.5s ease;
-	}
-
 	.testimonies-carousel__item.focused {
-		transform: scale(1.2);
+		transform: scale(1.1);
 		z-index: 1;
-	}
-
-	.carousel__button {
-		position: absolute;
-		top: 50%;
-		transform: translateY(-50%);
-		background-color: rgba(0, 0, 0, 0.5);
-		color: white;
-		border: none;
-		font-size: 24px;
-		padding: 10px;
-		cursor: pointer;
-		z-index: 2;
-	}
-
-	.carousel__button.prev {
-		left: 10px;
-	}
-
-	.carousel__button.next {
-		right: 10px;
-	}
-
-	/* Ajustar la altura para pantallas más pequeñas */
-
-	@media (max-width: 599px) {
-		.testimonies__carousel-wrapper {
-			min-height: 440px;
-		}
-	}
-
-	@media (min-width: 768px) {
-		.testimonies__carousel-wrapper {
-			min-height: 490px;
-		}
-	}
-
-	@media (min-width: 1024px) {
-		.testimonies__carousel-wrapper {
-			min-height: 490px;
-			margin-left: calc(50% - 220px);
-		}
-
-		.testimonies-carousel__item {
-			min-width: 450px;
-			transition: transform 0.5s ease;
-		}
 	}
 </style>

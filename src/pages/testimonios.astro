@@ -56,11 +56,13 @@ const sortedTestimonies = testimonials.sort((a, b) => {
 	<section class="flex flex-col gap-[1rem]">
 		<h2 class="sr-only">Testimonios</h2>
 		<h1 class="heading text-center">Mira lo que dicen de nosotros:</h1>
-		{
-			sortedTestimonies.map((testimony) => (
-				<TestimonyCard testimony={testimony} />
-			))
-		}
+		<div class="md:grid md:grid-cols-2 gap-6">
+			{
+				sortedTestimonies.map((testimony) => (
+					<TestimonyCard testimony={testimony} />
+				))
+			}
+		</div>
 	</section>
 	<!-- ================================== -->
 	<!--           Call To Action           -->

@@ -1,42 +1,96 @@
 <footer
 	class="bg-bars flex h-full w-full flex-col items-center gap-[0.5rem] rounded p-[1rem] text-center"
 >
-	{/* Logo/Nombre */}
-	<a
-		class="text-lg font-bold text-neutral-800"
-		href="/"
-		aria-label="Ir a la página de inicio"
-	>
-		NutriBienestar
-	</a>
-
-	{/* Redes Sociales */}
-	<nav aria-label="Redes sociales" class="flex items-center gap-[1rem]">
+	<div class="md:flex md:items-center">
+		{/* Logo/Nombre */}
 		<a
-			href="https://facebook.com"
-			target="_blank"
-			rel="noopener noreferrer"
-			aria-label="Visita nuestro Facebook"
+			class="title font-bold text-neutral-800"
+			href="/"
+			aria-label="Ir a la página de inicio"
 		>
-			<img
-				src="/icons/Facebook_Logo_Primary.svg"
-				class="h-[32px] w-[32px]"
-				alt="Facebook"
-			/>
+			NutriBienestar
 		</a>
-		<a
-			href="https://instagram.com"
-			target="_blank"
-			rel="noopener noreferrer"
-			aria-label="Visita nuestro Instagram"
-		>
-			<img
-				src="/icons/Instagram_Glyph_Gradient.svg"
-				class="h-[24px] w-[24px]"
-				alt="Instagram"
-			/>
-		</a>
-	</nav>
+		<div class="items-center md:flex">
+			<nav class="hidden md:block">
+				{/* Menú flotante de navegación */}
+				<ul
+					id="menu-hamburguer"
+					class="main flex gap-[1rem] rounded p-[1rem] text-end"
+				>
+					<li>
+						<a
+							href="/sobre-mi"
+							class="rounded-lg p-[0.5rem] transition hover:bg-neutral-600 hover:text-white"
+						>
+							Sobre Mí
+						</a>
+					</li>
+					<li>
+						<a
+							href="/servicios"
+							class="rounded-lg p-[0.5rem] transition hover:bg-neutral-600 hover:text-white"
+						>
+							Servicios
+						</a>
+					</li>
+					<li>
+						<a
+							href="/testimonios"
+							class="rounded-lg p-[0.5rem] transition hover:bg-neutral-600 hover:text-white"
+						>
+							Testimonios
+						</a>
+					</li>
+					<li>
+						<a
+							href="/blog"
+							class="rounded-lg p-[0.5rem] transition hover:bg-neutral-600 hover:text-white"
+						>
+							Blog
+						</a>
+					</li>
+					<li>
+						<a
+							href="/contacto"
+							class="rounded-lg p-[0.5rem] transition hover:bg-neutral-600 hover:text-white"
+						>
+							Contacto
+						</a>
+					</li>
+				</ul>
+			</nav>
+			{/* Redes Sociales */}
+			<div
+				aria-label="Redes sociales"
+				class="flex items-center justify-center gap-[1rem]"
+			>
+				<a
+					href="https://facebook.com"
+					target="_blank"
+					rel="noopener noreferrer"
+					aria-label="Visita nuestro Facebook"
+				>
+					<img
+						src="/icons/Facebook_Logo_Primary.svg"
+						class="h-[32px] w-[32px]"
+						alt="Facebook"
+					/>
+				</a>
+				<a
+					href="https://instagram.com"
+					target="_blank"
+					rel="noopener noreferrer"
+					aria-label="Visita nuestro Instagram"
+				>
+					<img
+						src="/icons/Instagram_Glyph_Gradient.svg"
+						class="h-[24px] w-[24px]"
+						alt="Instagram"
+					/>
+				</a>
+			</div>
+		</div>
+	</div>
 
 	{/* Texto Legal */}
 	<p class="legal-text text-center">

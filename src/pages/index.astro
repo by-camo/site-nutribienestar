@@ -27,7 +27,7 @@ const limitedPosts = posts.slice(0, 3);
 
 /* TESTIMONIES */
 const testimonials = await getCollection('testimonies');
-// const limitedTestimonies = testimonies.slice(0, 3);
+// const limitedTestimonials = testimonials.slice(0, 3);
 
 const realTestimonials = testimonials.map((t) => t.data);
 const limitedTestimonials = realTestimonials.slice(0, 3);
@@ -139,13 +139,14 @@ const limitedTestimonials = realTestimonials.slice(0, 3);
 	<!-- =============================== -->
 	<!--           Testimonies           -->
 	<!-- =============================== -->
-	<section id="testimonials-section" class="testimonies">
-		<h2 id="testimonials-heading" class="text__label">Testimonios</h2>
-		<TestimoniesCarousel testimonies={limitedTestimonials} />
+	<section id="testimonials-section" class="flex flex-col gap-4 text-center">
+		<h2 id="testimonials-heading" class="leading">Testimonios</h2>
+		<div><TestimoniesCarousel testimonies={limitedTestimonials} /></div>
+		
 		<div>
 			<a
-				href="/blog"
-				class="bg-brandPrimary focus:ring-brandPrimary mx-auto mb-[2rem] flex cursor-pointer gap-[0.5rem] rounded px-[1rem] py-[0.5rem] text-white shadow-lg transition-transform duration-200 hover:bg-neutral-600 focus:ring focus:outline-none active:scale-95"
+				href="/testimonios"
+				class="bg-brandPrimary focus:ring-brandPrimary mx-auto mb-[2rem] inline-block cursor-pointer gap-[0.5rem] rounded px-[1rem] py-[0.5rem] text-white shadow-lg transition-transform duration-200 hover:bg-neutral-600 focus:ring focus:outline-none active:scale-95"
 				aria-label="Leer más artículos sobre nutrición y bienestar"
 			>
 				¡Mira lo que dicen de mí!
